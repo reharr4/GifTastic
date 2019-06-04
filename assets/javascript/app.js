@@ -1,5 +1,5 @@
 
-var cartoons = ["Powerpuff Girls", "Spongebob Squarepants", "Animaniacs", "Super Jail"];
+var topics = ["Powerpuff Girls", "Spongebob Squarepants", "Animaniacs", "Super Jail"];
 
 $(document).ready(function () {
 
@@ -47,14 +47,25 @@ $(document).ready(function () {
                         cartoonImage.attr("src", results[i].images.fixed_height.url);
 
                         // append gif and rating to div
-                        gifDiv.append(p);
                         gifDiv.append(cartoonImage);
+                        gifDiv.append(p);
 
                         // add cartoon above previous cartoons
                         $("#cartoon-view").prepend(gifDiv);
                     }
                 }
-                $("")
+                $(".gif").on("click", function() {
+
+                    var state = $(this).attr("data-state");
+
+                    if(state === "still") {
+                        $(this).attr("src", $(this).attr("data-animate"));
+                        $(this).attr("data-state", "animate");
+                    } else {
+                        $(this).attr("src", $(this).attr("data-still"));
+                        $(this).attr("data-state", "still");
+                    }
+                })
 
             });
     }
@@ -65,15 +76,15 @@ $(document).ready(function () {
         $("#buttons-view").empty();
 
         // loop through array of GIF
-        for (var i = 0; i < cartoons.length; i++) {
+        for (var i = 0; i < topics.length; i++) {
             // generate buttons for each GIF in the array
             var a = $("<button>");
             // add class of GIF to button
             a.addClass("cartoon-btn");
             // add data-attribute
-            a.attr("data-cartoon", cartoons[i]);
+            a.attr("data-cartoon", topics[i]);
             // button text
-            a.text(cartoons[i]);
+            a.text(topics[i]);
             // add button to buttons-view div
             $("#buttons-view").append(a);
         }
@@ -87,7 +98,7 @@ $(document).ready(function () {
         var tv = $("#cartoon-input").val().trim();
 
         // add cartoon from textbox to array
-        cartoons.push(tv);
+        topics.push(tv);
 
         // call renderButtons to process array
         renderButtons();
