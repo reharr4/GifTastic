@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,25 +11,25 @@
 <body>
 
     <div class="container">
-        <h1>GifTastic</h1>
+        <h1>Gettin' Giphy with it</h1>
 
         <!-- Rendered Buttons go here -->
         <div id="buttons-view"></div>
 
-        <form id="animal-form">
-            <label for="animal-input">Add a gif!</label>
-            <input type="text" id="animal-input">
+        <form id="cartoon-form">
+            <label for="cartoon-input">Add a 'toon!</label>
+            <input type="text" id="cartoon-input">
             <br>
 
             <!-- Submit new gif -->
-            <input id="add-animal" type="submit" value="Add a gif!">
+            <input id="add-cartoon" type="submit" value="Add!">
         </form>
-    </div>
 
-    <div id="animal-view">
+        <div id="cartoon-view" data-still="cartoon-view" data-animate="cartoon-view" data-state="still" class="gif"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
+
 </html>
