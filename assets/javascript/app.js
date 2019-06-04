@@ -1,44 +1,59 @@
-$(document).ready(function () {
 
 var animals = ["cat", "dog", "horse", "otter"];
 
+$(document).ready(function () {
+
+   // add on click listener to elements with animal-btn class
+   $(document).on("click", ".animal-btn", displayAnimalInfo);
     function displayAnimalInfo() {
 
-    var animal = $(this).attr("data-animal");
-    // giphy api
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        animal + "&api_key=vVUVgEidbLRXqZbFQj3rwYnqtSXxw0MN&limit=10";
+        var animal = $(this).attr("data-animal");
+        // giphy api
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+            animal + "&api_key=vVUVgEidbLRXqZbFQj3rwYnqtSXxw0MN&limit=10";
 
-    // ajax call for button clicked
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
+        // ajax call for button clicked
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
 
-        // create a div to hold the GIF
-        var animalDIV = $("<div class='animal'>");
+            .then(function (response) {
+                var results = response.data;
 
-        // store the rating
-        var rating = response.Rated;
+                for (var i = 0; i < results.length; i++) {
+                    if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+                        var gifDiv = $("<div>");
+                        var rating = results[i].rating;
+                        var p = $("<p>").text("Rating: " + rating);
+                        // create a div to hold the GIF
+                        // var animalDIV = $("<div class='animal'>");
 
-        // create element to display rating
-        var pOne = $("<p>").text("Rating: " + rating);
+                        // store the rating
+                        // var rating = response.Rated;
 
-        // display the rating
-        animalDIV.append(pOne);
+                        // display the rating
+                        // animalDIV.append(pOne);
 
-        // get URL for image
-        var imgURL = response.Gif;
+                        // get URL for image
+                        // var imgURL = response.Gif;
 
-        // element to hold image
-        var gif = $("<img>").attr("src", imgURL);
+                        // element to hold image
+                        var animalImage = $("<img>")
 
-        // append gif
-        animalDIV.append(gif);
+                        animalImage.attr("src", results[i].images.fixed_height.url);
 
-        // add animal above previous animals
-        $("#animal-view").prepend(animalDIV);
-    });
+                        // append gif
+                        gifDiv.append(p);
+                        gifDiv.append(animalImage);
+
+                        // add animal above previous animals
+                        $("#animal-view").prepend(gifDiv);
+                    }
+                }
+
+
+            });
     }
 
     // function to display animal data
@@ -62,7 +77,7 @@ var animals = ["cat", "dog", "horse", "otter"];
     }
 
     // animal button on click function
-    $("#add-animal").on("click", function(event) {
+    $("#add-animal").on("click", function (event) {
         // press enter or submit
         event.preventDefault();
         // grab input from textbox
@@ -75,8 +90,7 @@ var animals = ["cat", "dog", "horse", "otter"];
         renderButtons();
     });
 
-    // add on click listener to elements with animal-btn class
-    $(document).on("click", ".animal-btn", displayAnimalInfo);
+ 
 
     // call renderButtons function to display initial buttons
     renderButtons();
