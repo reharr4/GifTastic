@@ -1,14 +1,14 @@
 
-var topics = ["Powerpuff Girls", "Spongebob Squarepants", "Animaniacs", "Super Jail"];
+var topics = ["Shakira", "Raleigh Ritchie", "Paul Simon", "The Kinks"];
 
 $(document).ready(function () {
 
    // add on click listener to elements with topic-btn class
-   $(document).on("click", ".topic-btn", displayCartoonInfo);
-    function displayCartoonInfo() {
+   $(document).on("click", ".topic-btn", displayPersonInfo);
+    function displayPersonInfo() {
 
         // button clicked 
-        var cartoon = $(this).attr("data-cartoon")
+        var person = $(this).attr("data-person")
 
         $(".row").on("click", ".gif", function() {
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
         })
         // giphy API
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            cartoon + "&api_key=vVUVgEidbLRXqZbFQj3rwYnqtSXxw0MN&limit=10";
+            person + "&api_key=vVUVgEidbLRXqZbFQj3rwYnqtSXxw0MN&limit=10";
 
         // ajax call for button clicked
         $.ajax({
@@ -51,10 +51,10 @@ $(document).ready(function () {
                         var p = $("<p>").text("Rating: " + rating);
 
                         // element to hold image
-                        var cartoonImage = $("<img>")
+                        var personImage = $("<img>")
 
                         // give image tag src attribute of property pulled from result
-                        cartoonImage.attr({
+                        personImage.attr({
                             'src': results[i].images.fixed_height.url,
                             'data-state': "still",
                             'data-animate': results[i].images.fixed_height.url,
@@ -64,10 +64,10 @@ $(document).ready(function () {
                         });
 
                         // append gif and rating to div
-                        gifDiv.append(cartoonImage);
+                        gifDiv.append(personImage);
                         gifDiv.append(p);
 
-                        // add cartoon above previous cartoons
+                        // add person above previous persons
                         $("#results").prepend(gifDiv);
                     }
                 })
@@ -75,7 +75,7 @@ $(document).ready(function () {
             };
     })
 
-    // function to display cartoon data
+    // function to display person data
     function renderButtons() {
         // empty form prior to adding new gifs
         $("#buttons-view").empty();
@@ -87,7 +87,7 @@ $(document).ready(function () {
             // add class of GIF to button
             a.addClass("topic-btn");
             // add data-attribute
-            a.attr("data-cartoon", topics[i]);
+            a.attr("data-person", topics[i]);
             // button text
             a.text(topics[i]);
             // add button to buttons-view div
@@ -95,21 +95,19 @@ $(document).ready(function () {
         }
     }
 
-    // cartoon button on click function
-    $("#add-cartoon").on("click", function (event) {
+    // person button on click function
+    $("#add-person").on("click", function (event) {
         // press enter or submit
         event.preventDefault();
         // grab input from textbox
-        var tv = $("#cartoon-input").val().trim();
+        var tv = $("#person-input").val().trim();
 
-        // add cartoon from textbox to array
+        // add person from textbox to array
         topics.push(tv);
 
         // call renderButtons to process array
         renderButtons();
     });
-
- 
 
     // call renderButtons function to display initial buttons
     renderButtons();
