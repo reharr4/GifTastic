@@ -1,5 +1,5 @@
 
-var topics = ["Shakira", "Raleigh Ritchie", "Paul Simon", "The Kinks"];
+var topics = ["Shakira", "Michael Jackson", "Paul Simon", "The Kinks"];
 
 $(document).ready(function () {
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
                         // give image tag src attribute of property pulled from result
                         personImage.attr({
-                            'src': results[i].images.fixed_height.url,
+                            'src': results[i].images.fixed_height_still.url,
                             'data-state': "still",
                             'data-animate': results[i].images.fixed_height.url,
                             'data-still': results[i].images.fixed_height_still.url,
