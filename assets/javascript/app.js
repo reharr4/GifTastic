@@ -3,12 +3,25 @@ var topics = ["Powerpuff Girls", "Spongebob Squarepants", "Animaniacs", "Super J
 
 $(document).ready(function () {
 
-   // add on click listener to elements with cartoon-btn class
-   $(document).on("click", ".cartoon-btn", displayCartoonInfo);
+   // add on click listener to elements with topic-btn class
+   $(document).on("click", ".topic-btn", displayCartoonInfo);
     function displayCartoonInfo() {
 
         // button clicked 
-        var cartoon = $(this).attr("data-cartoon");
+        var cartoon = $(this).attr("data-cartoon")
+
+        $(".row").on("click", ".gif", function() {
+
+            var state = $(this).attr("data-state");
+
+            if(state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
+        })
         // giphy API
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             cartoon + "&api_key=vVUVgEidbLRXqZbFQj3rwYnqtSXxw0MN&limit=10";
@@ -28,9 +41,6 @@ $(document).ready(function () {
                 // loop through resulting items
                 for (var i = 0; i < results.length; i++) {
 
-                    // act if resulting gif has appropriate rating
-                    if (results[i].rating !== "r") {
-
                         // create div for gif
                         var gifDiv = $("<div>");
 
@@ -44,31 +54,26 @@ $(document).ready(function () {
                         var cartoonImage = $("<img>")
 
                         // give image tag src attribute of property pulled from result
-                        cartoonImage.attr("src", results[i].images.fixed_height.url);
+                        cartoonImage.attr({
+                            'src': results[i].images.fixed_height.url,
+                            'data-state': "still",
+                            'data-animate': results[i].images.fixed_height.url,
+                            'data-still': results[i].images.fixed_height_still.url,
+                            'class': "gif",
+                            'alt': results[i].title
+                        });
 
                         // append gif and rating to div
                         gifDiv.append(cartoonImage);
                         gifDiv.append(p);
 
                         // add cartoon above previous cartoons
-                        $("#cartoon-view").prepend(gifDiv);
-                    }
-                }
-                $(".gif").on("click", function() {
-
-                    var state = $(this).attr("data-state");
-
-                    if(state === "still") {
-                        $(this).attr("src", $(this).attr("data-animate"));
-                        $(this).attr("data-state", "animate");
-                    } else {
-                        $(this).attr("src", $(this).attr("data-still"));
-                        $(this).attr("data-state", "still");
+                        $("#results").prepend(gifDiv);
                     }
                 })
 
-            });
-    }
+            };
+    })
 
     // function to display cartoon data
     function renderButtons() {
@@ -80,7 +85,7 @@ $(document).ready(function () {
             // generate buttons for each GIF in the array
             var a = $("<button>");
             // add class of GIF to button
-            a.addClass("cartoon-btn");
+            a.addClass("topic-btn");
             // add data-attribute
             a.attr("data-cartoon", topics[i]);
             // button text
@@ -108,4 +113,4 @@ $(document).ready(function () {
 
     // call renderButtons function to display initial buttons
     renderButtons();
-});
+;
