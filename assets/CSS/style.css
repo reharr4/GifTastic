@@ -5,7 +5,10 @@
     font-family: 'Bangers', cursive;
     font-size: 30px;
 }
-
+.img-block {
+    margin: auto;
+    width: 25rem;
+}
 
 .card-body {
     text-align: center;
