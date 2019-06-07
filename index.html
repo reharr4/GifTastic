@@ -7,38 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
     <title>GifTastic</title>
 </head>
 
 <body>
-    <div class="card">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="col-lg-1"></div>
         <div class="card-header">
+            <hr>
             Gettin' Giphy Wit' It
+            <hr>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Musicians</h5>
-            <p class="card-text">Choose one of the musicians below to see some gifs.Don't like these options? Add your own below!</p>
-            <!-- Rendered Buttons go here -->
-            <div id="buttons-view"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <img src="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy_s.gif"
-                data-still="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy.gif"
-                data-animate="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy.gif" data-state="still" class="gif">
-        </div>
-    </div>
-
-    <br>
-    <form id="person-form">
-        <label for="person-input">Add A Musician!</label>
-        <input type="text" id="person-input">
         <br>
+        <h5 class="card-title">Musicians</h5>
+        <div id="buttons-view"></div>
+        <br>
+    </div>
+    </div>
+    <div class="card">
+        <img src="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy.gif" alt="Ready, set, watch your step" style="width: 25rem" class="center-block">
+        <div class="card-body">
+            <p class="card-text">Choose one of the musicians below to see some gifs. Don't like these options? Add your
+                own below!</p>
+            <br>
+            <form id="person-form">
+                <label for="person-input"></label>
+                <input type="text" id="person-input">
+                <br>
+                <a href="#" id="add-person" type="submit" class="btn btn-primary">Add a musician!</a>
+        </div>
+    </div>
 
-        <!-- Submit new gif -->
-        <input id="add-person" type="submit" value="Add!">
     </form>
 
     <!-- holds results -->
