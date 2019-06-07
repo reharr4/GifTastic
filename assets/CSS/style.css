@@ -1,0 +1,36 @@
+.card,
+.jumbotron {
+    text-align: center;
+    align-content: center;
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
+}
+
+
+.card-body {
+    text-align: center;
+    color: blue;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.card-header,
+.card-title {
+    text-align: center;
+    color: blue;
+    font-size: 30px;
+    font-weight: bolder;}
+
+#person-form {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
