@@ -1,5 +1,5 @@
 
-var topics = ["Shakira", "Michael Jackson", "Paul Simon", "The Kinks"];
+var topics = ["Shakira", "Michael Jackson", "Paul Simon", "Outkast"];
 
 $(document).ready(function () {
 
@@ -100,10 +100,11 @@ $(document).ready(function () {
         // press enter or submit
         event.preventDefault();
         // grab input from textbox
-        var tv = $("#person-input").val().trim();
+        var person = $("#person-input").val().trim();
+        $("#person-input").val("");
 
         // add person from textbox to array
-        topics.push(tv);
+        topics.push(person);
 
         // call renderButtons to process array
         renderButtons();

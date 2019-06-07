@@ -5,28 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/CSS/style.css">
     <title>GifTastic</title>
 </head>
 
 <body>
-
-    <div class="container">
-        <h1>Gettin' Giphy with it</h1>
-
-        <!-- Rendered Buttons go here -->
-        <div id="buttons-view"></div>
-
-        <form id="cartoon-form">
-            <label for="cartoon-input">Add a 'toon!</label>
-            <input type="text" id="cartoon-input">
-            <br>
-
-            <!-- Submit new gif -->
-            <input id="add-cartoon" type="submit" value="Add!">
-        </form>
-
-        <div id="cartoon-view" data-still="cartoon-view" data-animate="cartoon-view" data-state="still" class="gif"></div>
+    <div class="card">
+        <div class="card-header">
+            Gettin' Giphy Wit' It
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Musicians</h5>
+            <p class="card-text">Choose one of the musicians below to see some gifs.Don't like these options? Add your own below!</p>
+            <!-- Rendered Buttons go here -->
+            <div id="buttons-view"></div>
+        </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <img src="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy_s.gif"
+                data-still="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy.gif"
+                data-animate="https://media.giphy.com/media/kLM9I1g8jsiAM/giphy.gif" data-state="still" class="gif">
+        </div>
+    </div>
+
+    <br>
+    <form id="person-form">
+        <label for="person-input">Add A Musician!</label>
+        <input type="text" id="person-input">
+        <br>
+
+        <!-- Submit new gif -->
+        <input id="add-person" type="submit" value="Add!">
+    </form>
+
+    <!-- holds results -->
+    <div class="container">
+        <div class="row">
+            <div id="results"></div>
+        </div>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
